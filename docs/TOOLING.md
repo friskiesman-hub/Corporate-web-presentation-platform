@@ -29,7 +29,19 @@
 ## 3. Language and technical naming
 
 - Codex отвечает пользователю на русском языке, если пользователь явно не попросил другой язык.
-- Technical identifiers сохраняются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts и config keys.
+- Английский сохраняется только для точных технических идентификаторов: file names, folder names, component names, TypeScript types, functions, CSS classes, package names, Git commands, npm/pnpm scripts, config keys, MCP-серверов, Codex skills и официальных названий инструментов вроде `Vite`, `React`, `TypeScript`, `21st.dev Magic MCP`.
+- Не используй английские смысловые слова в русских объяснениях, если есть точный и естественный русский эквивалент:
+  - `section` -> `секция`, кроме имени типа или компонента;
+  - `proof` -> `доказательство`;
+  - `evidence` -> `подтверждение данными` или `доказательная база`;
+  - `management implication` -> `управленческий вывод`;
+  - `baseline` -> `база сравнения`;
+  - `current value` -> `текущее значение`;
+  - `safe implementation prompt` -> `безопасный промпт на реализацию`;
+  - `visual polish` -> `визуальная доводка`;
+  - `creative direction` -> `творческое направление`.
+- Названия компонентов и типов остаются на английском: `ComparisonEvidence`, `PresentationSection`, `ExecutiveCover`, `KpiStrip`, `PresentationConfig`, `BaseSection`.
+- В документации и промптах можно использовать английское имя сущности в backticks, а затем объяснять смысл по-русски.
 - Code comments в новом или изменяемом коде должны быть bilingual, если комментарий содержательный: English first, Russian second. Комментарии должны быть короткими, полезными и не объяснять очевидный код.
 - Commit subject должен быть на английском в Conventional Commits style.
 - Не делай commit subject bilingual, потому что это зашумляет `git log --oneline`.
@@ -37,8 +49,8 @@
 - Commit body должен быть bilingual, если изменение важное, архитектурное или может быть непонятно только из subject:
   - `EN:` concise technical summary;
   - `RU:` краткое объяснение смысла для пользователя/команды.
-- Documentation may be Russian-first for project guidance, business context, brand logic and user workflow.
-- Technical terms внутри документации сохраняй на английском, когда это повышает точность.
+- Документация может быть Russian-first для project guidance, business context, brand logic и user workflow.
+- Technical identifiers внутри документации сохраняй на английском, когда это повышает точность; обычные смысловые слова переводи на русский.
 - Не используй русский язык в identifiers, file names, component names, scripts и config keys.
 
 ## 4. Codex skills

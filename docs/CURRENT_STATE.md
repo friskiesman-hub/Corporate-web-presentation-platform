@@ -215,7 +215,19 @@ Approved future creative modes include:
 `AGENTS.md` and `docs/TOOLING.md` now define language conventions:
 
 - Codex answers the user in Russian unless the user explicitly requests another language.
-- Technical identifiers remain in English: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts, and config keys.
+- English is preserved only for exact technical identifiers: file names, folder names, component names, TypeScript types, functions, CSS classes, package names, Git commands, npm/pnpm scripts, config keys, MCP servers, Codex skills, and official tool names such as `Vite`, `React`, `TypeScript`, and `21st.dev Magic MCP`.
+- Do not use English meaning words in Russian explanations when a precise and natural Russian equivalent exists. Examples:
+  - `section` -> `секция`, except when it is a type or component name;
+  - `proof` -> `доказательство`;
+  - `evidence` -> `подтверждение данными` or `доказательная база`;
+  - `management implication` -> `управленческий вывод`;
+  - `baseline` -> `база сравнения`;
+  - `current value` -> `текущее значение`;
+  - `safe implementation prompt` -> `безопасный промпт на реализацию`;
+  - `visual polish` -> `визуальная доводка`;
+  - `creative direction` -> `творческое направление`.
+- Component and type names remain in English: `ComparisonEvidence`, `PresentationSection`, `ExecutiveCover`, `KpiStrip`, `PresentationConfig`, `BaseSection`.
+- Documentation and prompts may use the English entity name in backticks, then explain the meaning in Russian.
 - Code comments added in new or changed code should be bilingual when meaningful: English first, Russian second.
 - Comments must be short, useful, and must not explain obvious code.
 - Commit subjects must be English Conventional Commits.
@@ -224,7 +236,7 @@ Approved future creative modes include:
 - Commit bodies should be bilingual when the change is important, architectural, or could be unclear from the subject alone:
   - `EN:` concise technical summary;
   - `RU:` краткое объяснение смысла для пользователя/команды.
-- Project/business/brand guidance may be Russian-first; technical terms inside documentation should remain in English where that improves precision.
+- Project/business/brand guidance may be Russian-first; technical identifiers inside documentation should remain in English where that improves precision, while ordinary meaning words should be translated into Russian.
 - Avoid Russian in identifiers, file names, component names, scripts, and config keys.
 
 ## Source files created

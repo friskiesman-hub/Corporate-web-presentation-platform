@@ -5,10 +5,22 @@
 ## 1. Язык взаимодействия
 
 - Отвечай пользователю на русском языке, если пользователь явно не попросил другой язык.
-- Технические названия, команды, имена файлов, директорий, CSS-классов, React-компонентов, TypeScript-типов, MCP-серверов и Codex skills сохраняй на английском.
+- Английский сохраняй только для точных технических идентификаторов: file names, folder names, component names, TypeScript types, functions, CSS classes, package names, Git commands, npm/pnpm scripts, config keys, MCP-серверов, Codex skills и официальных названий инструментов вроде `Vite`, `React`, `TypeScript`, `21st.dev Magic MCP`.
+- Не используй английские смысловые слова в русских объяснениях, если есть точный и естественный русский эквивалент.
+  - `section` -> `секция`, кроме имени типа или компонента;
+  - `proof` -> `доказательство`;
+  - `evidence` -> `подтверждение данными` или `доказательная база`;
+  - `management implication` -> `управленческий вывод`;
+  - `baseline` -> `база сравнения`;
+  - `current value` -> `текущее значение`;
+  - `safe implementation prompt` -> `безопасный промпт на реализацию`;
+  - `visual polish` -> `визуальная доводка`;
+  - `creative direction` -> `творческое направление`.
 - В коде используй английские имена сущностей. Пояснения пользователю — на русском.
 - Если в проекте есть англоязычная документация библиотеки или инструмента, не переводи технические API и команды.
 - Technical identifiers всегда остаются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts и config keys.
+- Названия компонентов и типов остаются на английском: `ComparisonEvidence`, `PresentationSection`, `ExecutiveCover`, `KpiStrip`, `PresentationConfig`, `BaseSection`.
+- В документации и промптах можно использовать английское имя сущности в backticks, а затем объяснять смысл по-русски.
 - Не смешивай русский язык в identifiers, file names, component names, scripts и config keys.
 - Если добавляешь новые содержательные комментарии в код, делай их bilingual:
   - English first;
