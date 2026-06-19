@@ -13,7 +13,7 @@ The previous stable BORK Internet Boutique Q2 2026 presentation remains only a v
 ## Last commit
 
 ```text
-7277be9 docs: define language and commit conventions
+d13541f refactor: extract shared presentation types
 ```
 
 ## Skeleton commit
@@ -25,11 +25,11 @@ d052c1f feat: initialize presentation platform skeleton
 ## Recent commits
 
 ```text
+d13541f refactor: extract shared presentation types
+1602f1c docs: refine language and commit message standards
 7277be9 docs: define language and commit conventions
 389cb55 docs: clarify creative range beyond boutique reference
 7a53eb7 docs: add stable demo archived reference
-cabb27f docs: add stable demo reference structure
-78c34ba docs: align current state checkpoint commit
 ```
 
 ## Current stack
@@ -58,9 +58,17 @@ Commands documented for the current skeleton:
 pnpm install
 pnpm dev
 pnpm build
+pnpm preview
 ```
 
-Note: in the current Codex runtime, `npm` was not available in PATH. Build verification was completed through the available Node runtime using the package script.
+Tooling nuance: in the current Codex UI shell, `pnpm` may be unavailable in the default `PATH`. The latest architecture refactor was verified through the equivalent direct commands using the available Node runtime:
+
+```text
+node ./node_modules/typescript/bin/tsc
+node ./node_modules/vite/bin/vite.js build
+```
+
+Do not run dependency installation or package-manager cleanup unless the user explicitly asks for it.
 
 ## Current project structure
 
@@ -115,8 +123,10 @@ Note: in the current Codex runtime, `npm` was not available in PATH. Build verif
         SectionShell.tsx
     lib/
       formatters.ts
+      metrics.ts
       presentationRenderer.tsx
     presentations/
+      types.ts
       internet-boutique-demo/
         data.ts
         presentation.config.ts
@@ -127,6 +137,8 @@ Note: in the current Codex runtime, `npm` was not available in PATH. Build verif
       KpiStrip/
         KpiStrip.tsx
         types.ts
+      registry.tsx
+      types.ts
     styles/
       globals.css
     tokens/
@@ -222,14 +234,18 @@ src/app/App.tsx
 src/components/PresentationNav/PresentationNav.tsx
 src/components/SectionShell/SectionShell.tsx
 src/lib/formatters.ts
+src/lib/metrics.ts
 src/lib/presentationRenderer.tsx
 src/main.tsx
 src/presentations/internet-boutique-demo/data.ts
 src/presentations/internet-boutique-demo/presentation.config.ts
+src/presentations/types.ts
 src/sections/ExecutiveCover/ExecutiveCover.tsx
 src/sections/ExecutiveCover/types.ts
 src/sections/KpiStrip/KpiStrip.tsx
 src/sections/KpiStrip/types.ts
+src/sections/registry.tsx
+src/sections/types.ts
 src/styles/globals.css
 src/tokens/breakpoints.ts
 src/tokens/colors.ts
@@ -261,7 +277,7 @@ No other dependencies should be added without explicit approval.
 
 ## Checks passed
 
-The skeleton build passed.
+The skeleton build passed after the shared presentation types refactor.
 
 Verified package script behavior:
 
@@ -269,15 +285,22 @@ Verified package script behavior:
 scripts.build = "tsc && vite build"
 ```
 
-Observed successful build output:
+Because `pnpm` was not available in the default Codex UI shell and the bundled `pnpm` attempted a dependency status check that could purge `node_modules`, the build was verified through the direct equivalent:
+
+```text
+node ./node_modules/typescript/bin/tsc
+node ./node_modules/vite/bin/vite.js build
+```
+
+Observed successful `vite build` output:
 
 ```text
 vite v5.4.21 building for production...
-39 modules transformed.
+40 modules transformed.
 dist/index.html
 dist/assets/index-*.css
 dist/assets/index-*.js
-built successfully
+built in 323ms
 ```
 
 `dist/` and `node_modules/` are ignored by `.gitignore` and should not be committed.
@@ -287,14 +310,18 @@ built successfully
 These pieces are the stable foundation for the next step:
 
 - Vite + React + TypeScript baseline.
-- `presentation.config.ts` as the typed presentation entry point.
+- Shared `PresentationConfig` lives in `src/presentations/types.ts`.
+- Shared `BaseSection` and `PresentationSection` live in `src/sections/types.ts`.
 - `sections` array as the source of section order; no fixed slide count.
-- `presentationRenderer.tsx` dispatching sections by `section.type`.
-- Reusable section contracts through local `types.ts` files.
+- `presentationRenderer.tsx` dispatches sections by `section.type` without importing demo-specific config types.
+- `src/sections/registry.tsx` maps known section types to React components.
+- Reusable section contracts extend the shared `BaseSection`.
+- Metric-related types live in `src/lib/metrics.ts`, so formatters do not depend on `KpiItem`.
 - `SectionShell` as the first responsive layout primitive.
-- `PresentationNav` generated from config sections.
+- `PresentationNav` is generated from shared section contracts, not from demo-specific config.
 - Brand tokens separated under `src/tokens/`.
 - Plain CSS reset and responsive rules in `src/styles/globals.css`.
+- The `internet-boutique-demo` presentation remains a demo config and source of mock content, not the source of shared platform contracts.
 
 ## Experimental areas
 
@@ -331,11 +358,11 @@ Next recommended step: run a platform architecture review of the current skeleto
 The likely next implementation milestone is one of:
 
 1. Add one more reusable section pattern, such as `DecisionSummary` or `ChannelPerformance`, still without chart libraries.
-2. Introduce a shared presentation type module if section unions start to outgrow the demo config.
+2. Review whether the current `sectionRegistry` and shared section union are enough before adding a third section type.
 3. Do responsive QA for desktop and iPhone Pro Max viewport using the current skeleton.
 4. Create a small data contract review before adding infographics.
 
-Prefer option 2 before adding many sections, because `PresentationSection` currently lives in the demo config and may need to move to a shared `src/lib` or `src/presentations` type module once more presentations appear.
+Prefer option 2 before adding many sections, because the shared contracts now exist and should stay intentionally small rather than becoming a premature template engine.
 
 ## Starter prompt for new Codex UI chat
 
@@ -355,8 +382,8 @@ Prefer option 2 before adding many sections, because `PresentationSection` curre
 - .agents/skills/corporate-web-presentation/SKILL.md
 
 Контекст:
-Technical skeleton уже создан и закоммичен в commit d052c1f:
-feat: initialize presentation platform skeleton.
+Technical skeleton уже создан, а shared presentation contracts вынесены в commit d13541f:
+refactor: extract shared presentation types.
 
 Текущий стек:
 Vite + React + TypeScript + plain CSS, package manager pnpm.
