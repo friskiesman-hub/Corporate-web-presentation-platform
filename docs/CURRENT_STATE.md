@@ -13,6 +13,12 @@ The previous stable BORK Internet Boutique Q2 2026 presentation remains only a v
 ## Last commit
 
 ```text
+81ec4b1 docs: add current state checkpoint
+```
+
+## Skeleton commit
+
+```text
 d052c1f feat: initialize presentation platform skeleton
 ```
 
