@@ -36,3 +36,15 @@ docs/TOOLING.md
 Старая стабильная web-презентация используется только как visual reference. Новый проект не должен быть заперт в ее архитектуре, количестве слайдов, старой навигации или plain HTML/CSS/JS.
 
 Мы фиксируем brand DNA, но разрешаем креатив в форме, motion, инфографике и интерактивности.
+
+## Technical skeleton
+
+Минимальный Vite + React + TypeScript skeleton запускается так:
+
+```bash
+pnpm install
+pnpm dev
+pnpm build
+```
+
+Skeleton проверяет базовое направление: презентация собирается из typed config, секции рендерятся по `section.type`, brand tokens отделены от компонентов, layout учитывает desktop и iPhone Pro Max.
