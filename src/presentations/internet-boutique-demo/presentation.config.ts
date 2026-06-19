@@ -1,17 +1,5 @@
-import type { ExecutiveCoverSection } from "../../sections/ExecutiveCover/types";
-import type { KpiStripSection } from "../../sections/KpiStrip/types";
+import type { PresentationConfig } from "../types";
 import { demoKpis, demoPeriod } from "./data";
-
-export type PresentationSection = ExecutiveCoverSection | KpiStripSection;
-
-export interface PresentationConfig {
-  id: string;
-  title: string;
-  audience: string;
-  period: string;
-  thesis: string;
-  sections: PresentationSection[];
-}
 
 export const internetBoutiqueDemoPresentation: PresentationConfig = {
   id: "internet-boutique-demo",

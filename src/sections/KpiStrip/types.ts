@@ -1,15 +1,16 @@
+import type { MetricDirection, MetricUnit } from "../../lib/metrics";
+import type { BaseSection } from "../types";
+
 export interface KpiItem {
   label: string;
   value: number;
-  unit: "%" | "rub" | "count";
+  unit: MetricUnit;
   delta: number;
-  direction: "up" | "down" | "flat";
+  direction: MetricDirection;
   basis: string;
 }
 
-export interface KpiStripSection {
-  id: string;
-  type: "kpi-strip";
+export interface KpiStripSection extends BaseSection<"kpi-strip"> {
   title: string;
   thesis: string;
   comparison: string;

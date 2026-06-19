@@ -1,6 +1,6 @@
-import type { KpiItem } from "../sections/KpiStrip/types";
+import type { MetricUnit } from "./metrics";
 
-export function formatMetricValue(value: number, unit: KpiItem["unit"]) {
+export function formatMetricValue(value: number, unit: MetricUnit) {
   if (unit === "%") {
     return `${value.toLocaleString("en-US", { maximumFractionDigits: 1 })}%`;
   }
@@ -17,7 +17,7 @@ export function formatMetricValue(value: number, unit: KpiItem["unit"]) {
   return value.toLocaleString("en-US");
 }
 
-export function formatDelta(value: number, unit: KpiItem["unit"]) {
+export function formatDelta(value: number, unit: MetricUnit) {
   const sign = value > 0 ? "+" : "";
 
   if (unit === "%") {

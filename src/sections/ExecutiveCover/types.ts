@@ -1,6 +1,6 @@
-export interface ExecutiveCoverSection {
-  id: string;
-  type: "executive-cover";
+import type { BaseSection } from "../types";
+
+export interface ExecutiveCoverSection extends BaseSection<"executive-cover"> {
   eyebrow: string;
   title: string;
   thesis: string;

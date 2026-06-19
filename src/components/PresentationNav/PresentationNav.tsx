@@ -1,4 +1,4 @@
-import type { PresentationSection } from "../../presentations/internet-boutique-demo/presentation.config";
+import type { PresentationSection } from "../../sections/types";
 
 interface PresentationNavProps {
   title: string;
