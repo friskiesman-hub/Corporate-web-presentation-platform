@@ -36,6 +36,46 @@
 - Mobile-first variants.
 - Нестандартные форматы executive presentation.
 
+## Creative Range
+
+Brand DNA is stable, creative expression is variable.
+
+Стабильны:
+
+- палитра;
+- logo / pattern / crest, если доступны и одобрены;
+- премиальный тон;
+- управленческая точность;
+- отсутствие marketplace aesthetics;
+- высокая читаемость на desktop и iPhone Pro Max.
+
+Могут меняться от презентации к презентации:
+
+- composition;
+- background strategy;
+- visual metaphor;
+- navigation;
+- motion choreography;
+- chart language;
+- level of interactivity.
+
+No single visual mode should become mandatory for all future presentations. Интерьерные фотографии бутиков — важный reference для понимания BORK-взгляда на пространство, материалы, свет и премиальность, но не default visual style для всей platform.
+
+Платформа должна помогать top management в несколько запросов создавать разные премиальные web-презентации на бизнес-данных, а не множество вариаций одной "бутиковой" презентации.
+
+Допустимые creative modes:
+
+- Spatial / boutique atmosphere;
+- Product hero / product detail;
+- Event / hospitality;
+- Service / delivery / Cybertruck;
+- Watercolor / editorial illustration;
+- Abstract material graphics;
+- Typography-first executive report;
+- Data-first premium analytics;
+- Motion-first narrative;
+- Hybrid cinematic story.
+
 ## 4. Цветовая логика
 
 Базовая палитра должна оставаться в премиальном диапазоне:
