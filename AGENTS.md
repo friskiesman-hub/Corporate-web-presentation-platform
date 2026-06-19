@@ -303,9 +303,10 @@ Codex может менять такие файлы только если пол
 3. `QA_CHECKLIST.md`
 4. `docs/BRAND_DNA.md`
 5. `docs/REFERENCE_USAGE.md`
-6. `docs/TOOLING.md`
-7. `.agents/skills/*/SKILL.md`, если skill релевантен
-8. `DEPLOY.md`, если задача касается деплоя
+6. `docs/DATA_VISUALIZATION_STRATEGY.md`
+7. `docs/TOOLING.md`
+8. `.agents/skills/*/SKILL.md`, если skill релевантен
+9. `DEPLOY.md`, если задача касается деплоя
 
 Если есть reference-материалы старой презентации, используй их только как источник brand feel и lessons learned.
 
