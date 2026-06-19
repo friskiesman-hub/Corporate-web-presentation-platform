@@ -13,13 +13,23 @@ The previous stable BORK Internet Boutique Q2 2026 presentation remains only a v
 ## Last commit
 
 ```text
-81ec4b1 docs: add current state checkpoint
+7277be9 docs: define language and commit conventions
 ```
 
 ## Skeleton commit
 
 ```text
 d052c1f feat: initialize presentation platform skeleton
+```
+
+## Recent commits
+
+```text
+7277be9 docs: define language and commit conventions
+389cb55 docs: clarify creative range beyond boutique reference
+7a53eb7 docs: add stable demo archived reference
+cabb27f docs: add stable demo reference structure
+78c34ba docs: align current state checkpoint commit
 ```
 
 ## Current stack
@@ -72,6 +82,21 @@ Note: in the current Codex runtime, `npm` was not available in PATH. Build verif
     CURRENT_STATE.md
     REFERENCE_USAGE.md
     TOOLING.md
+  references/
+    stable-q2-2026-demo/
+      README.md
+      live-reference.md
+      archived-source/
+        index.html
+        styles.css
+        script.js
+        assets/
+      observations/
+        brand-assets.md
+        mobile-observations.md
+        motion-observations.md
+        reference-audit.md
+        visual-observations.md
   .agents/
     skills/
       corporate-web-presentation/
@@ -127,12 +152,68 @@ docs/BRAND_DNA.md
 docs/REFERENCE_USAGE.md
 docs/TOOLING.md
 docs/CURRENT_STATE.md
+references/stable-q2-2026-demo/README.md
+references/stable-q2-2026-demo/live-reference.md
+references/stable-q2-2026-demo/observations/reference-audit.md
 .agents/skills/corporate-web-presentation/SKILL.md
 .agents/skills/premium-ui-review/SKILL.md
 .agents/skills/responsive-presentation-qa/SKILL.md
 ```
 
 Do not change these files unless the user explicitly asks for documentation, instruction, QA, deploy, or skill updates.
+
+## Reference package state
+
+The stable Q2 2026 demo has been added as an internal visual reference package:
+
+```text
+references/stable-q2-2026-demo/archived-source/
+```
+
+It contains the old stable demo source (`index.html`, `styles.css`, `script.js`) and its `assets/`, including imagery, SVG pattern assets, and fonts. This package is reference-only and must not be connected to the new platform runtime.
+
+`references/stable-q2-2026-demo/observations/reference-audit.md` has been filled with extracted visual DNA, mobile lessons, motion lessons, asset notes, non-copy rules, and platform opportunities.
+
+The reference audit now includes a Creative Freedom Clause:
+
+- the old Q2 2026 demo is a quality bar, not a visual template;
+- boutique interiors are one valid atmospheric tool, not the default background system;
+- success is measured by premium quality, business clarity, strong storytelling, desktop excellence, and iPhone Pro Max excellence, not visual similarity to the old demo.
+
+`docs/BRAND_DNA.md` now includes Creative Range:
+
+- Brand DNA is stable, creative expression is variable;
+- no single visual mode should become mandatory for all future presentations;
+- boutique interiors are important for understanding BORK spatial/material premium logic, but they are not the default visual mode.
+
+Approved future creative modes include:
+
+- Product hero / product detail;
+- Event / hospitality;
+- Service / delivery / Cybertruck;
+- Watercolor / editorial illustration;
+- Abstract material graphics;
+- Typography-first executive report;
+- Data-first premium analytics;
+- Motion-first narrative;
+- Hybrid cinematic story.
+
+## Language and commit conventions
+
+`AGENTS.md` and `docs/TOOLING.md` now define language conventions:
+
+- Codex answers the user in Russian unless the user explicitly requests another language.
+- Technical identifiers remain in English: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts, and config keys.
+- Code comments added in new or changed code should be bilingual when meaningful: English first, Russian second.
+- Comments must be short, useful, and must not explain obvious code.
+- Commit subjects must be English Conventional Commits.
+- Do not make commit subjects bilingual, because that makes `git log --oneline` noisy.
+- Small routine commits may use an English-only subject without a body.
+- Commit bodies should be bilingual when the change is important, architectural, or could be unclear from the subject alone:
+  - `EN:` concise technical summary;
+  - `RU:` краткое объяснение смысла для пользователя/команды.
+- Project/business/brand guidance may be Russian-first; technical terms inside documentation should remain in English where that improves precision.
+- Avoid Russian in identifiers, file names, component names, scripts, and config keys.
 
 ## Source files created
 
@@ -235,6 +316,8 @@ These areas are intentionally not final:
 - Do not install Tailwind CSS, Framer Motion, GSAP, Recharts, D3, Visx, Next.js, ESLint, Prettier, or any new dependency.
 - Do not copy the old Q2 2026 presentation architecture.
 - Do not constrain the platform to exactly 5 sections or slides.
+- Do not treat boutique interiors as the default visual mode for future presentations.
+- Do not import archived reference assets or fonts into `src/` without separate approval.
 - Do not create production deployment flow.
 - Do not change `AGENTS.md`, `PROJECT_CONTEXT.md`, `QA_CHECKLIST.md`, `DEPLOY.md`, `docs/*.md`, or `.agents/skills/*/SKILL.md` unless the user explicitly asks.
 - Do not commit `dist/`, `node_modules/`, `.DS_Store`, `.env`, or generated package-manager cache folders.

@@ -8,18 +8,20 @@
 - Технические названия, команды, имена файлов, директорий, CSS-классов, React-компонентов, TypeScript-типов, MCP-серверов и Codex skills сохраняй на английском.
 - В коде используй английские имена сущностей. Пояснения пользователю — на русском.
 - Если в проекте есть англоязычная документация библиотеки или инструмента, не переводи технические API и команды.
-- Technical names всегда остаются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names и Git commands.
-- Не смешивай русский язык в identifiers, file names, component names и scripts.
-- Если добавляешь комментарии в новый или изменяемый код, делай их bilingual:
+- Technical identifiers всегда остаются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts и config keys.
+- Не смешивай русский язык в identifiers, file names, component names, scripts и config keys.
+- Если добавляешь новые содержательные комментарии в код, делай их bilingual:
   - English first;
   - Russian second;
   - комментарий должен быть коротким и полезным;
   - не комментируй очевидный код.
 - Commit subject должен быть на английском в Conventional Commits style, например `docs: update tooling notes`.
-- Если нужен commit body, он может быть bilingual:
+- Не делай commit subject bilingual: это зашумляет `git log --oneline`.
+- Для маленьких routine commits достаточно English-only subject без body.
+- Commit body должен быть bilingual, если изменение важное, архитектурное или может быть непонятно только из subject:
   - `EN:` concise technical summary;
-  - `RU:` краткое объяснение для пользователя или команды.
-- Документация может быть Russian-first, если она описывает project guidance, business context, brand logic или user workflow.
+  - `RU:` краткое объяснение смысла для пользователя/команды.
+- Документация может быть Russian-first, если она описывает project guidance, business context, brand logic или user workflow. Technical terms внутри документации сохраняй на английском, когда это повышает точность.
 
 
 ## 2. Управление инструкциями проекта

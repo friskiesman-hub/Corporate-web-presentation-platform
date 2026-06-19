@@ -29,14 +29,17 @@
 ## 3. Language and technical naming
 
 - Codex отвечает пользователю на русском языке, если пользователь явно не попросил другой язык.
-- Technical names сохраняются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names и Git commands.
-- Code comments в новом или изменяемом коде должны быть bilingual: English first, Russian second. Комментарии должны быть короткими, полезными и не объяснять очевидный код.
+- Technical identifiers сохраняются на английском: file names, folder names, components, TypeScript types, functions, CSS classes, package names, Git commands, scripts и config keys.
+- Code comments в новом или изменяемом коде должны быть bilingual, если комментарий содержательный: English first, Russian second. Комментарии должны быть короткими, полезными и не объяснять очевидный код.
 - Commit subject должен быть на английском в Conventional Commits style.
-- Commit body, если нужен, может быть bilingual:
+- Не делай commit subject bilingual, потому что это зашумляет `git log --oneline`.
+- Для маленьких routine commits достаточно English-only subject без body.
+- Commit body должен быть bilingual, если изменение важное, архитектурное или может быть непонятно только из subject:
   - `EN:` concise technical summary;
-  - `RU:` краткое объяснение для пользователя или команды.
+  - `RU:` краткое объяснение смысла для пользователя/команды.
 - Documentation may be Russian-first for project guidance, business context, brand logic and user workflow.
-- Не используй русский язык в identifiers, file names, component names и scripts.
+- Technical terms внутри документации сохраняй на английском, когда это повышает точность.
+- Не используй русский язык в identifiers, file names, component names, scripts и config keys.
 
 ## 4. Codex skills
 
