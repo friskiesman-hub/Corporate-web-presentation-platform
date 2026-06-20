@@ -1,6 +1,6 @@
 export const typography = {
   fontFamily:
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    '"Avenir Next", "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif',
   scale: {
     display: "clamp(3rem, 7vw, 7rem)",
     headline: "clamp(2rem, 4vw, 4.5rem)",

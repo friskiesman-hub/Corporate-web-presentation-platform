@@ -1,10 +1,10 @@
 export const colors = {
-  graphite: "#11100d",
-  warmBlack: "#181511",
-  stone: "#6f6a61",
-  stoneMuted: "#a8a099",
-  ivory: "#f3efe6",
-  warmWhite: "#fbf8f1",
-  amber: "#c9823b",
-  bronze: "#6c4b2f",
+  graphite: "#2d2523",
+  warmBlack: "#382f2d",
+  stone: "#746661",
+  stoneMuted: "#978c87",
+  ivory: "#eee9e5",
+  warmWhite: "#f4efeb",
+  amber: "#be531c",
+  bronze: "#746661",
 };

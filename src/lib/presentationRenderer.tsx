@@ -9,6 +9,11 @@ export function renderPresentationSections(sections: PresentationSection[]) {
 
         return <SectionComponent key={section.id} section={section} />;
       }
+      case "executive-performance-hero": {
+        const SectionComponent = sectionRegistry["executive-performance-hero"];
+
+        return <SectionComponent key={section.id} section={section} />;
+      }
       case "kpi-strip": {
         const SectionComponent = sectionRegistry["kpi-strip"];
 
@@ -20,7 +25,7 @@ export function renderPresentationSections(sections: PresentationSection[]) {
         return (
           <section className="section-shell" key={unknownSection.id}>
             <div className="section-shell__inner">
-              Unknown section type: {unknownSection.type}
+              Неизвестный тип секции: {unknownSection.type}
             </div>
           </section>
         );

@@ -1,4 +1,5 @@
 import type { ExecutiveCoverSection } from "./ExecutiveCover/types";
+import type { ExecutivePerformanceHeroSection } from "./ExecutivePerformanceHero/types";
 import type { KpiStripSection } from "./KpiStrip/types";
 
 export interface BaseSection<TType extends string = string> {
@@ -9,4 +10,7 @@ export interface BaseSection<TType extends string = string> {
   navLabel?: string;
 }
 
-export type PresentationSection = ExecutiveCoverSection | KpiStripSection;
+export type PresentationSection =
+  | ExecutiveCoverSection
+  | ExecutivePerformanceHeroSection
+  | KpiStripSection;

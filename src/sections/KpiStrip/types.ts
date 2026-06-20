@@ -5,7 +5,9 @@ export interface KpiItem {
   label: string;
   value: number;
   unit: MetricUnit;
+  displayValue?: string;
   delta: number;
+  displayDelta?: string;
   direction: MetricDirection;
   basis: string;
 }
