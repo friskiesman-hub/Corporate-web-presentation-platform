@@ -52,7 +52,10 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
           <p className="section-thesis">{section.thesis}</p>
         </div>
         {chart ? (
-          <article className="revenue-chart report-chart motion-typography" aria-label="Динамика GMV по месяцам">
+          <article
+            className="revenue-chart report-chart motion-typography premium-hover-surface premium-hover-surface--light"
+            aria-label="Динамика GMV по месяцам"
+          >
             <header className="revenue-chart__topline">
               <div>
                 <span>{chart.toplineLabel}</span>

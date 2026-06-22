@@ -27,7 +27,7 @@ export function ExecutivePerformanceHero({
         {summaryKpis.length > 0 ? (
           <div className="executive-performance-hero__summary motion-typography" aria-label="Ключевые показатели Q2 2026">
             {summaryKpis.map((item) => (
-              <article key={item.label}>
+              <article className="premium-hover-surface premium-hover-surface--dark" key={item.label}>
                 <strong>{item.value}</strong>
                 <span>{item.label}</span>
               </article>
@@ -36,7 +36,10 @@ export function ExecutivePerformanceHero({
         ) : null}
 
         {section.ctaLabel ? (
-          <a className="executive-performance-hero__cta motion-typography" href={`#${section.ctaTargetId ?? ""}`}>
+          <a
+            className="executive-performance-hero__cta motion-typography premium-hover-surface premium-hover-surface--accent"
+            href={`#${section.ctaTargetId ?? ""}`}
+          >
             {section.ctaLabel}
           </a>
         ) : null}

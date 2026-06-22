@@ -19,7 +19,7 @@ export function KpiStrip({ section }: KpiStripProps) {
       </div>
       <div className="kpi-grid report-chart motion-typography" aria-label="Ключевые показатели">
         {section.items.map((item) => (
-          <article className="kpi-card" key={item.label}>
+          <article className="kpi-card premium-hover-surface premium-hover-surface--dark" key={item.label}>
             <span className="kpi-card__label">{item.label}</span>
             <strong className="kpi-card__value">
               {item.displayValue ?? formatMetricValue(item.value, item.unit)}
