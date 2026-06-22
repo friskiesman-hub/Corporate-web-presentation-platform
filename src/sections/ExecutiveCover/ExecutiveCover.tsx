@@ -5,6 +5,7 @@ import {
   CartesianGrid,
   Line,
   LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -53,16 +54,35 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
         </div>
         {chart ? (
           <article
-            className="revenue-chart report-chart motion-typography premium-hover-surface premium-hover-surface--light"
+            className="revenue-chart report-chart motion-typography"
             aria-label="Динамика GMV по месяцам"
           >
             <header className="revenue-chart__topline">
-              <div>
-                <span>{chart.toplineLabel}</span>
+              <div className="revenue-chart__header-copy">
+                <strong className="revenue-chart__header-title">План / факт GMV</strong>
+                <span>Факт против плана, млн ₽</span>
+                <div className="revenue-chart__legend revenue-chart__legend--header" aria-hidden="true">
+                  <span>
+                    <i className="revenue-chart__legend-mark revenue-chart__legend-mark--fact" />
+                    {chart.factLegendLabel}
+                  </span>
+                  <span>
+                    <i className="revenue-chart__legend-mark revenue-chart__legend-mark--plan" />
+                    {chart.planLegendLabel}
+                  </span>
+                  <span>
+                    <i className="revenue-chart__legend-mark revenue-chart__legend-mark--target" />
+                    Ориентир 1 000
+                  </span>
+                </div>
                 <p>{chart.insight}</p>
               </div>
-              <div>
-                <strong>{chart.toplineValue}</strong>
+              <div className="revenue-chart__topline-metric">
+                <span>Q2 GMV</span>
+                <strong>
+                  {chart.toplineValue}
+                  <span>млн ₽</span>
+                </strong>
                 <em>{chart.toplineDelta}</em>
               </div>
             </header>
@@ -70,28 +90,43 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
               <div className="revenue-chart__canvas">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={chartData} margin={{ top: 18, right: 18, left: 2, bottom: 10 }}>
-                    <CartesianGrid stroke="rgba(56, 47, 45, 0.12)" strokeDasharray="3 8" vertical={false} />
+                    <CartesianGrid stroke="rgba(56, 47, 45, 0.12)" strokeDasharray="3 8" />
+                    <ReferenceLine
+                      y={1000}
+                      stroke="var(--color-accent-main)"
+                      strokeDasharray="6 6"
+                      strokeWidth={2}
+                      label={{
+                        position: "left",
+                        content: ({ viewBox }) => (
+                          <ReferenceStarLabel
+                            viewBox={(viewBox as { x?: number; y?: number } | null) ?? null}
+                          />
+                        ),
+                      }}
+                    />
                     <XAxis
                       dataKey="date"
                       tickLine={false}
                       axisLine={false}
-                      tick={{ fill: "rgba(56, 47, 45, 0.68)", fontSize: 13 }}
-                      tickMargin={16}
+                      tick={{ fill: "var(--chart-muted)", fontSize: 12 }}
+                      tickMargin={8}
                     />
                     <YAxis
                       tickLine={false}
                       axisLine={false}
-                      domain={getRevenueDomain(chartData)}
-                      tick={{ fill: "rgba(56, 47, 45, 0.52)", fontSize: 12 }}
+                      domain={[700, 1100]}
+                      ticks={[700, 900, 1100]}
+                      tick={{ fill: "var(--chart-muted)", fontSize: 12 }}
                       tickFormatter={formatRevenueValue}
-                      width={56}
+                      width={54}
                       label={{
                         value: chart.yAxisLabel,
                         angle: -90,
                         position: "insideLeft",
-                        fill: "rgba(56, 47, 45, 0.52)",
+                        fill: "var(--chart-muted)",
                         fontSize: 12,
-                        dx: -10,
+                        dx: -18,
                       }}
                     />
                     <Tooltip
@@ -113,20 +148,20 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
                     <Line
                       type="monotone"
                       dataKey="plan"
-                      stroke="rgba(56, 47, 45, 0.55)"
-                      strokeDasharray="8 9"
-                      strokeWidth={2.5}
-                      dot={{ r: 3, fill: "var(--color-text-dark)", strokeWidth: 0 }}
-                      activeDot={{ r: 5, fill: "var(--color-text-dark)", strokeWidth: 0 }}
+                      stroke="var(--chart-plan)"
+                      strokeDasharray="6 6"
+                      strokeWidth={2}
+                      dot={{ r: 3, fill: "var(--chart-plan)", stroke: "rgba(244,239,235,0.86)", strokeWidth: 2 }}
+                      activeDot={{ r: 5 }}
                       connectNulls
                     />
                     <Line
                       type="monotone"
                       dataKey="total"
-                      stroke="var(--color-accent-main)"
-                      strokeWidth={4}
-                      dot={{ r: 4, fill: "var(--color-accent-main)", stroke: "var(--color-bg-ivory)", strokeWidth: 3 }}
-                      activeDot={{ r: 7, fill: "var(--color-accent-main)", stroke: "var(--color-bg-ivory)", strokeWidth: 4 }}
+                      stroke="var(--chart-primary)"
+                      strokeWidth={2}
+                      dot={{ r: 3, fill: "var(--chart-primary)", stroke: "rgba(244,239,235,0.92)", strokeWidth: 2 }}
+                      activeDot={{ r: 6 }}
                       connectNulls
                     />
                   </LineChart>
@@ -140,6 +175,10 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
                 <span>
                   <i className="revenue-chart__legend-mark revenue-chart__legend-mark--plan" />
                   {chart.planLegendLabel}
+                </span>
+                <span>
+                  <i className="revenue-chart__legend-mark revenue-chart__legend-mark--target" />
+                  Ориентир 1 000
                 </span>
               </div>
             </div>
@@ -169,18 +208,24 @@ function formatRevenueValue(value: number) {
   return Math.round(value).toLocaleString("ru-RU");
 }
 
-function getRevenueDomain(data: RevenueChartDataPoint[]): [number, number] {
-  const values = data.flatMap((item) => [item.total, item.plan]);
+function ReferenceStarLabel({
+  viewBox,
+}: {
+  viewBox?: { x?: number; y?: number } | null;
+}) {
+  const x = viewBox?.x;
+  const y = viewBox?.y;
 
-  if (values.length === 0) return [0, 100];
+  if (typeof x !== "number" || typeof y !== "number") return null;
 
-  const minValue = Math.min(...values);
-  const maxValue = Math.max(...values);
-  const range = maxValue - minValue || 1;
-  const padding = Math.max(range * 0.14, 36);
-
-  return [
-    Math.max(0, Math.floor((minValue - padding) / 20) * 20),
-    Math.ceil((maxValue + padding) / 20) * 20,
-  ];
+  return (
+    <g transform={`translate(${x - 19},${y - 5})`}>
+      <path
+        d="M5 0L6.35 3.05L9.65 3.42L7.18 5.65L7.85 8.92L5 7.24L2.15 8.92L2.82 5.65L0.35 3.42L3.65 3.05L5 0Z"
+        fill="var(--color-accent-main)"
+        stroke="var(--color-accent-main)"
+        strokeWidth="1.2"
+      />
+    </g>
+  );
 }
