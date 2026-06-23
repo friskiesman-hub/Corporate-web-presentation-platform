@@ -136,11 +136,11 @@ function Q3FocusSection({ section }: KpiStripProps) {
         </h2>
         <p className="section-thesis motion-typography">{section.thesis}</p>
         <div className="reference-focus-grid motion-typography" aria-label="Фокусы Q3 2026">
-          <article><strong>+18%</strong><span>цель GMV Q3</span></article>
-          <article><strong>45%</strong><span>CRM-вклад</span></article>
-          <article><strong>82 тыс. ₽</strong><span>целевой чек</span></article>
+          <article className="premium-hover-surface premium-hover-surface--dark"><strong>+18%</strong><span>цель GMV Q3</span></article>
+          <article className="premium-hover-surface premium-hover-surface--dark"><strong>45%</strong><span>CRM-вклад</span></article>
+          <article className="premium-hover-surface premium-hover-surface--dark"><strong>82 тыс. ₽</strong><span>целевой чек</span></article>
         </div>
-        <a className="reference-premium-button motion-typography" href="#executive-performance-hero">
+        <a className="reference-premium-button motion-typography premium-hover-surface premium-hover-surface--accent" href="#executive-performance-hero">
           Вернуться в начало
         </a>
       </div>

@@ -131,6 +131,7 @@ export function ExecutiveCover({ section }: ExecutiveCoverProps) {
                     />
                     <Tooltip
                       cursor={{ stroke: "rgba(56, 47, 45, 0.28)", strokeDasharray: "4 8" }}
+                      offset={8}
                       content={({ active, payload, label }) => {
                         if (!active || !payload?.length) return null;
                         const row = payload[0].payload as RevenueChartDataPoint;
