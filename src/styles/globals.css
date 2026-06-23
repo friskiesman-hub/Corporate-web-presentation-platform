@@ -327,7 +327,7 @@ body.light-ui .presentation-nav__timeline {
 }
 
 #executive-performance-hero {
-  --section-image: url("/brand/bork-boutique-entrance-web.png");
+  --section-image: url("/brand/bork-boutique-entrance.jpg");
   --section-image-position: center center;
   --section-overlay: radial-gradient(circle at 72% 24%, rgba(190, 83, 28, 0.11), transparent 30%),
     linear-gradient(90deg, rgba(56, 47, 45, 0.84) 0%, rgba(56, 47, 45, 0.5) 46%, rgba(56, 47, 45, 0.14) 100%);
